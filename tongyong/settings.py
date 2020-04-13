@@ -56,9 +56,11 @@ INSTALLED_APPS = [
     'apps.music_apps.sing_list',
     'apps.music_apps.talk',
     'apps.music_apps.user_history',
+
     'apps.cangku.ck_index',
     'apps.cangku.ck_yuangong',
     'apps.cangku.ck_gongsi',
+    'apps.cangku.ck_cangku',
 
     'apps.bx.bx_index',
 

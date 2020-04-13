@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import types, groups
+from .models import types, groups, gonggao
 
 
 # Register your models here.
@@ -14,4 +14,12 @@ class typesM(admin.ModelAdmin):
 class groupsM(admin.ModelAdmin):
     list_display = (
         'name',
+    )
+
+
+@admin.register(gonggao)
+class gonggaoM(admin.ModelAdmin):
+    list_display = (
+        'title',
+        'auth',
     )

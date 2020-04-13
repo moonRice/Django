@@ -8,9 +8,9 @@ from tongyong import settings
 
 class yuangong(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.DO_NOTHING, verbose_name='账号信息')
-    name = models.CharField(max_length=255, verbose_name='员工名称')
+    name = models.CharField(max_length=255, verbose_name='员工姓名')
     age = models.CharField(max_length=2, verbose_name='年龄')
-    gender = models.BooleanField(verbose_name='性别')
+    gender = models.BooleanField(verbose_name='性别', help_text='如果是可爱的男孩纸的话，还请勾上哦~')
 
     groups = models.ManyToManyField(groups, verbose_name='所属小组')
 

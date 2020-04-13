@@ -2,6 +2,9 @@
 <!DOCTYPE html>
 <html lang="zh">
 <head>
+{% block main_head %}
+
+{% endblock %}
 <meta name="viewport" content="width=device-width, initial-scale=1">
 {% load static %}
     <meta charset="UTF-8">
@@ -10,6 +13,7 @@
 {#    <link rel="stylesheet" href="{% static 'css/新拟态.css' %}">#}
     <script src="{% static 'js/jquery-3.4.1.js' %}"></script>
     <script src="{% static 'js/bootstrap.js' %}"></script>
+
 {# 代码高亮 #}
     <link rel="stylesheet" type="text/css" href="{% static 'css/code.css' %}">
 {# 引入局部CSS #}
@@ -62,13 +66,13 @@
                 <li {% if page == 'index' %}class="active"{% endif %}><a href="{% url 'mainLobby:index' %}">主页</a></li>
 
                 {% if user.username == 'zhengyang' %}
-                    <li {% if page == 'music' %}class="active"{% endif %}><a href="{% url 'music:music_index' %}">音乐推荐</a></li>
+{#                    <li {% if page == 'music' %}class="active"{% endif %}><a href="{% url 'music:music_index' %}">音乐推荐</a></li>#}
 
                 {% elif user.username == 'wuhuaqiang' %}
-                    <li><a href="{% url 'baoxian:idx' %}" target="_blank">保险销售</a></li>
+                    <li><a href="{% url 'baoxian:idx' %}">保险销售</a></li>
 
                 {% elif user.username == 'Lizhixin' %}
-                    <li><a href="{% url 'cangku:index' %}" target="_blank">仓库管理</a></li>
+                    <li><a href="{% url 'cangku:index' %}">仓库管理</a></li>
 
                 {% elif user.username == 'admin' %}
 {#                    <li><a href="{% url 'cangku:index' %}" target="_blank">仓库管理</a></li>#}
@@ -76,7 +80,10 @@
 {#                    <li><a href="{% url 'baoxian:idx' %}" target="_blank">保险销售</a></li>#}
 
                 {% endif %}
-                <li {% if page == 'music_demo' %}class="active"{% endif %}><a href="{% url 'music:music_demo' %}" target="_blank">音乐推荐【体验版】</a></li>
+                <li {% if page == 'cangku' %}class="active"{% endif %}><a href="{% url 'cangku:idx' %}">仓库首页【体验版】</a></li>
+                <li {% if page == 'ck_cangku' %}class="active"{% endif %}><a href="{% url 'ck_cangku:idx' %}">仓库管理【体验版】</a></li>
+                <li {% if page == 'ck_yuangong' %}class="active"{% endif %}><a href="{% url 'ck_yuangong:idx' %}">员工管理【体验版】</a></li>
+                <li {% if page == 'music_demo' %}class="active"{% endif %}><a href="{% url 'music:music_demo' %}">音乐推荐【体验版】</a></li>
                 <li {% if page == 'blog_list' %}class="active"{% endif %}><a href="{% url 'MyBlog:show_blog_list' %}">博客在线</a></li>
 {#                <li><a href="#">关于我们</a></li>#}
                 <li {% if page == 'update' %}class="active"{% endif %}><a href="{% url 'mainLobby:update_information' %}">更新日志</a></li>

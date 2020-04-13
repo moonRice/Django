@@ -24,6 +24,8 @@ from apps.music_apps.sing.models import SingerName, SingInfo
 
 import options49
 
+from apps.music_apps.user_history.models import UserTypeHistory, allHistoryCount
+
 
 # Create your views here.
 class LoginView(View):
@@ -280,9 +282,30 @@ class UserOrderView(loMxi, View):
             sings = SingInfo.objects.get(id=id)
             sings_li.append(sings)
 
+        # 返回图表数据————点击计数
+        flag = '2'
+        a = None
+        b = None
+        flagR = None
+        userID = User.objects.get(username=user).id
+        allUser = User.objects.all()
+        try:
+            a = UserTypeHistory.objects.filter(user_id=userID)
+        except UserTypeHistory.DoesNotExist:
+            flag = '0'
+            flagR = '0'
+
+        if flag == '2':
+            a = UserTypeHistory.objects.filter(user_id=userID)
+            b = allHistoryCount.objects.all()
+            flagR = '1'
         # 组织上下文
         context = {
             'sings_li': sings_li,
+            'r': a,
+            'b': b,
+            'flagR': flagR,
+            'allUser': allUser,
         }
 
         return render(request, 'user_ord.html', context)

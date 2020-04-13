@@ -1,6 +1,12 @@
 {% extends 'user_center_model.html' %}
+{% load static %}
+
 {% block title %}
 浏览记录
+{% endblock %}
+
+{% block main_head %}
+<script src="{% static 'js/echarts.js' %}"></script>
 {% endblock %}
 
 {% block ord %}
@@ -11,4 +17,67 @@
     {% empty %}
     暂无浏览记录。
     {% endfor %}
+{% endblock %}
+
+{% block in_body %}
+    {% if flagR == '1' %}
+        <div id="main" style="width: 1000px;height:500px;"></div>
+            <script type="text/javascript">
+                // 基于准备好的dom，初始化echarts实例
+                var myChart = echarts.init(document.getElementById('main'));
+
+                // 指定图表的配置项和数据
+                var option = {
+                    title: {
+                        text: "全站点击记录"
+                    },
+                    legend: {},
+                    tooltip: {},
+                    dataset:
+                        {
+                            source:
+                            [
+                                ['用户', {% for a in allUser %}'{{ a.username }}',{% endfor %}],
+
+
+
+
+
+                                {% for a in r %}
+                                ['{{ a.type }}', '{{ a.count }}'],
+                                {% endfor %}
+                            ]
+                        },
+                    xAxis:
+                        [
+                            {type: 'category', gridIndex: 0},
+                            {type: 'category', gridIndex: 1}
+                        ],
+                    yAxis:
+                        [
+                            {gridIndex: 0},
+                            {gridIndex: 1}
+                        ],
+                    grid:
+                        [
+                            {bottom: '55%'},
+                            {top: '55%'}
+                        ],
+                    series:
+                        [
+                            // 这几个系列会在第一个直角坐标系中，每个系列对应到 dataset 的每一行。
+                            {% for a in r %}
+                            {type: 'bar', seriesLayoutBy: 'row'},
+                            {% endfor %}
+                            // 这几个系列会在第二个直角坐标系中，每个系列对应到 dataset 的每一列。
+                            {type: 'bar', xAxisIndex: 1, yAxisIndex: 1},
+                        ]
+                };
+
+                // 使用刚指定的配置项和数据显示图表。
+                myChart.setOption(option);
+            </script>
+    {% else %}
+            暂无点击数据！
+    {% endif %}
 {% endblock %}

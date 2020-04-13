@@ -33,3 +33,16 @@ class UserLike(models.Model):
         db_table = 'ty_UserLike'
         verbose_name = '推荐给用户的类型'
         verbose_name_plural = verbose_name
+
+
+class allHistoryCount(models.Model):
+    count = models.IntegerField(verbose_name='总点击次数')
+    type = models.CharField(max_length=255, verbose_name='类型')
+
+    def __str__(self):
+        return self.type
+
+    class Meta:
+        db_table = 'ty_allHistoryCount'
+        verbose_name = '全站类型点击次数统计'
+        verbose_name_plural = verbose_name

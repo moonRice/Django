@@ -13,6 +13,7 @@ database_host = '192.168.0.8'
 database_port = '3306'
 database_username = 'root'
 database_password = 'root'
+# database_name = 'lsgd'
 database_name = 'tongyong'
 
 """Redis Settings --> Celery"""

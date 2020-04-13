@@ -1,9 +1,241 @@
 {% extends 'base_model.html' %}
+{% load static %}
 
 {% block title %}
 仓库在线管理平台
 {% endblock %}
 
+{% block main_head %}
+<script src="{% static 'js/echarts.js' %}"></script>
+{% endblock %}
+
+{% block in_script %}
+
+{% endblock %}
 {% block main_body %}
+    <div class="container">
+    <div class="col-xs-6 col-xs-offset-1">
+        <div id="yuangongShuliang" style="width: 700px;height:500px;"></div>
+    <script>
+        var yuangongShuliang = echarts.init(document.getElementById('yuangongShuliang'));
+        var yuangongShuliang_option = {
+            title: {
+                text: "仓库统计",
+                left: 'center',
+            },
+        tooltip: {
+            trigger: 'item',
+            formatter: '{a} <br/>{b}: {c} ({d}%)'
+        },
+        legend: {
+            orient: 'vertical',
+            left: '1%',
+            bottom: '90%',
+            data: [
+                {% for a in cangku_get %}
+                '{{ a.name }}',
+                {% endfor %}
+            ]
+        },
+        series: [
+            {
+                name: '拥有仓库数量',
+                type: 'pie',
+                radius: ['50%', '70%'],
+                avoidLabelOverlap: false,
+                label: {
+                    show: false,
+                    position: 'center'
+                },
+                emphasis: {
+                    label: {
+                        show: true,
+                        fontSize: '30',
+                        fontWeight: 'bold'
+                    }
+                },
+                labelLine: {
+                    show: false
+                },
+                data: [
+                    {#{value: 335, name: '直接访问'},#}
+                    {% for a in cangku_get %}
+                        {value: {{ a.shuliang }}, name: '{{ a.name }}'},
+                    {% endfor %}
+                ]
+            }
+        ]
+    };
+        yuangongShuliang.setOption(yuangongShuliang_option);
+    </script>
+    </div>
+        <div class="col-xs-4 " style="margin-top: 1em">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div align="center">
+                            公告牌
+                        </div>
+                    </div>
+                        <div class="panel-body">
+                            <ul>
+                                {% for a in gonggao_get|slice:'0:5' %}
+
+                                <li><a href="/notice/notice/3">{{ a.title }}</a> <small>发布人：{{ a.auth }}</small></li>
+                                {% empty %}
+                                    暂无公告
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+
+
+
+    <div class="container">
+        <div align="center">
+        <div id="guanxitu" style="width: 800px;height:400px;"></div>
+    <script type="text/javascript">
+        var guanxitu = echarts.init(document.getElementById('guanxitu'));
+
+var yuanqu_guanxitu_data =
+    {
+        "name": "园区详情",
+        "children": [
+            {
+        {% for a in yuanqu_get %}
+            "name": "{{ a.name }}",
+            "children":
+                [
+                    {% for b in cangku_get %}
+                        {
+                            "name": "{{ b.name }}",
+                            "children":
+                            [
+                                {% for c in huojia_get %}
+                                    {% if c.forWhichCangku_id == b.id %}
+                                    {
+                                        "name": "{{ c.name }}",
+                                        "value": {{ c.shuliang }},
+                                    },
+                                    {% endif %}
+                                {% endfor %}
+                            ]
+                        },
+                    {% endfor %}
+                ],
+        {% endfor %}
+
+    },
+        ]
+    };
+
+var yuangong_guanxitu_data = {
+    "name": "员工阵营",
+    "children": [
+        {% for a in groups_get %}
+        {
+            "name": "{{ a.name }}",
+        },
+        {% endfor %}
+    ]
+};
+
+guanxitu.hideLoading();
+
+guanxitu.setOption(guanxitu_option = {
+    tooltip: {
+        trigger: 'item',
+        triggerOn: 'mousemove'
+    },
+    legend: {
+        top: '2%',
+        left: '3%',
+        orient: 'vertical',
+        data: [{
+            name: '园区仓库关系图',
+            icon: 'rectangle'
+        },
+        {
+            name: '员工关系图',
+            icon: 'circle'
+        }],
+        borderColor: '#c23531'
+    },
+    series:[
+        {
+            type: 'tree',
+
+            name: '园区仓库关系图',
+
+            data: [yuanqu_guanxitu_data],
+
+            top: '5%',
+            left: '7%',
+            bottom: '2%',
+            right: '60%',
+
+            symbolSize: 7,
+
+            label: {
+                position: 'left',
+                verticalAlign: 'middle',
+                align: 'right'
+            },
+
+            leaves: {
+                label: {
+                    position: 'right',
+                    verticalAlign: 'middle',
+                    align: 'left'
+                }
+            },
+
+            expandAndCollapse: true,
+
+            animationDuration: 550,
+            animationDurationUpdate: 750
+
+        },
+        {
+            type: 'tree',
+            name: '员工关系图',
+            data: [yuangong_guanxitu_data],
+
+            top: '20%',
+            left: '60%',
+            bottom: '22%',
+            right: '18%',
+
+            symbolSize: 7,
+
+            label: {
+                position: 'left',
+                verticalAlign: 'middle',
+                align: 'right'
+            },
+
+            leaves: {
+                label: {
+                    position: 'right',
+                    verticalAlign: 'middle',
+                    align: 'left'
+                }
+            },
+
+            expandAndCollapse: true,
+
+            animationDuration: 550,
+            animationDurationUpdate: 750
+        }
+    ]
+});
+
+
+        guanxitu.setOption(guanxitu_option);
+    </script>
+        </div>
+    </div>
 
 {% endblock %}

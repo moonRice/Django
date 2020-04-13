@@ -3,7 +3,7 @@ from django.views.generic import View
 from django_redis import get_redis_connection
 
 from .models import SingerName, SingInfo, Flag, Zhuangji
-from apps.music_apps.user_history.models import UserTypeHistory
+from apps.music_apps.user_history.models import UserTypeHistory, allHistoryCount
 
 import markdown
 
@@ -51,26 +51,34 @@ def singer_details(request, singer_id):
                     'errmsg': '由于分析历史记录需要个人信息，请登录！'
                 })
             get_count = UserTypeHistory.objects.get(type=str(type), user_id=user_id).count
+            # get_all_count = allHistoryCount.objects.get(type=str(type)).count
         except UserTypeHistory.DoesNotExist:
             get_count = 0
+            # get_all_count = 0
 
         """若不存在这条记录"""
         if get_count == 0:
             # 1、新数据默认次数为1
             # 2、创建一条新数据，对应填入用户名、类型、次数
             user_type_count = UserTypeHistory.objects.create(user_id=user_id, type=str(type), count=1)
+            # all_type_count = allHistoryCount.objects.create(type=str(type), count=1)
             # 3、写入数据
             user_type_count.save()
+            # all_type_count.save()
 
         """若存在这条记录"""
         # 1、原有记录基础上加1
         get_count_result = int(get_count) + 1
+        # get_all_count_result = int(get_all_count) + 1
         # 2、重新定位具体数据
         user_type_count = UserTypeHistory.objects.get(user_id=user_id, type=type)
+        # all_type_count = allHistoryCount.objects.get(type=type)
         # 3、更新数据
         user_type_count.count = get_count_result
+        # all_type_count.count = get_all_count_result
         # 4、写入数据
         user_type_count.save()
+        # all_type_count.save()
 
     s_zj = Zhuangji.objects.filter(auth_id=s_i.id)
     context = {

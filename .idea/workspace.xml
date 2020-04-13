@@ -48,6 +48,7 @@
       <list>
         <option value="Python Script" />
         <option value="HTML File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -62,6 +63,7 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="jsx.switch.disabled" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/apps/models" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
@@ -151,9 +153,9 @@
       <method v="2" />
     </configuration>
     <list>
+      <item itemvalue="Django server.tongyong" />
       <item itemvalue="Python.Debug" />
       <item itemvalue="Python.auto" />
-      <item itemvalue="Django server.tongyong" />
     </list>
     <recent_temporary>
       <list>
@@ -222,7 +224,12 @@
       <workItem from="1586138905156" duration="7324000" />
       <workItem from="1586226043542" duration="6882000" />
       <workItem from="1586435685987" duration="1064000" />
-      <workItem from="1586437021469" duration="4017000" />
+      <workItem from="1586437021469" duration="4844000" />
+      <workItem from="1586503104160" duration="8130000" />
+      <workItem from="1586571864422" duration="16075000" />
+      <workItem from="1586693790889" duration="4670000" />
+      <workItem from="1586748845195" duration="12230000" />
+      <workItem from="1586781680794" duration="2225000" />
     </task>
     <servers />
   </component>

@@ -35,6 +35,8 @@ urlpatterns = [
 
     # 仓库平台
     path('cangku/', include(('apps.cangku.ck_index.urls', 'cangku'), namespace='cangku')),
+    path('ck/', include(('apps.cangku.ck_cangku.urls', 'ck_cangku'), namespace='ck_cangku')),
+    path('yg/', include(('apps.cangku.ck_yuangong.urls', 'ck_yuangong'), namespace='ck_yuangong')),
     # 保险销售
     path('bx/', include(('apps.bx.bx_index.urls', 'baoxian'), namespace='baoxian')),
 ]
