@@ -1,0 +1,14 @@
+{% extends 'user_center_model.html' %}
+{% block title %}
+浏览记录
+{% endblock %}
+
+{% block ord %}
+    <div align="center"><h3>浏览记录</h3></div>
+    <br>
+    {% for sings in sings_li %}
+    <a href="{% url 'singer:singer_details' sings.id %}"><img src="{{ sings.image_URL }}" class="img-circle" width="100" height="100"></a>
+    {% empty %}
+    暂无浏览记录。
+    {% endfor %}
+{% endblock %}

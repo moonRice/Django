@@ -1,0 +1,116 @@
+{# 标题 页首登录注册 #}
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+{% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+{#    <link rel="stylesheet" href="{% static 'css/新拟态.css' %}">#}
+    <script src="{% static 'js/jquery-3.4.1.js' %}"></script>
+    <script src="{% static 'js/bootstrap.js' %}"></script>
+{# 代码高亮 #}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/code.css' %}">
+{# 引入局部CSS #}
+{% block in_style %}
+{% endblock in_style %}
+
+
+    {# 网页标题内容快 #}
+    <title>{% block title %}{% endblock title %}</title>
+
+    <style>
+        body{
+            padding-top: 50px;
+            background-size: cover;
+            background-color: #eee;
+        }
+        .starter{
+            padding: 40px 15px;
+            text-align: center;
+        }
+        {% block style %}
+        {% endblock style %}
+    </style>
+
+
+{% block in_script %}
+{% endblock in_script %}
+<script>
+{% block script %}
+{% endblock script %}
+</script>
+</head>
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+    <span class="sr-only">切换菜单</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="#" class="navbar-brand">这是一个网站</a>
+            </div>
+
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+{#            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">#}
+                <ul class="nav navbar-nav">
+
+                <li {% if page == 'index' %}class="active"{% endif %}><a href="{% url 'mainLobby:index' %}">主页</a></li>
+
+                {% if user.username == 'zhengyang' %}
+                    <li {% if page == 'music' %}class="active"{% endif %}><a href="{% url 'music:music_index' %}">音乐推荐</a></li>
+
+                {% elif user.username == 'wuhuaqiang' %}
+                    <li><a href="{% url 'baoxian:idx' %}" target="_blank">保险销售</a></li>
+
+                {% elif user.username == 'Lizhixin' %}
+                    <li><a href="{% url 'cangku:index' %}" target="_blank">仓库管理</a></li>
+
+                {% elif user.username == 'admin' %}
+{#                    <li><a href="{% url 'cangku:index' %}" target="_blank">仓库管理</a></li>#}
+{#                    <li {% if page == 'music' %}class="active"{% endif %}><a href="{% url 'music:music_index' %}">音乐推荐</a></li>#}
+{#                    <li><a href="{% url 'baoxian:idx' %}" target="_blank">保险销售</a></li>#}
+
+                {% endif %}
+                <li {% if page == 'music_demo' %}class="active"{% endif %}><a href="{% url 'music:music_demo' %}" target="_blank">音乐推荐【体验版】</a></li>
+                <li {% if page == 'blog_list' %}class="active"{% endif %}><a href="{% url 'MyBlog:show_blog_list' %}">博客在线</a></li>
+{#                <li><a href="#">关于我们</a></li>#}
+                <li {% if page == 'update' %}class="active"{% endif %}><a href="{% url 'mainLobby:update_information' %}">更新日志</a></li>
+                </ul>
+{#            </div>#}
+            </div>
+        </div>
+    </nav>
+    {# 网页顶部信息块 #}
+    {% block head %}
+        {% if user.is_authenticated %}
+        <p style="text-align:right">
+            欢迎你，<a href="{% url 'user:user_center' %}">{{ user.username }}</a> | <a href="{% url 'user:logout' %}">退出登录</a>
+        </p>
+        {% else %}
+        <p style="text-align:right">
+            <a href="{% url 'user:login' %}">登录</a> | <a href="{% url 'user:register' %}">注册</a>
+        </p>
+        {% endif %}
+        <br>
+    {% endblock head %}
+
+    {# 网页主体部分块 #}
+    {% block main_body %}
+    {% endblock main_body %}
+    <br>
+    {# 页底版权栏 #}
+    {%block copyright %}
+    <hr>
+        <p style="text-align:center">
+            超级牛逼的网站 ©2020 江苏·南京 sunRice~<br>
+{#            加入我们 | 求助 | 关于我们 | #}
+            <a href="/admin" target="_blank">后台管理</a>
+        </p>
+    {% endblock copyright %}
+</body>
+</html>

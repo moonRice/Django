@@ -1,0 +1,22 @@
+{% extends 'base_model.html' %}
+
+{% block title %}
+{{ errmsg }}
+{% endblock title %}
+
+{% block main_body %}
+    <div class="container">
+        <div align="center">
+            Sorry,administrator is so lazy and you can ONLY SEE SOME ERROR MESSAGE...
+            <br>
+            <h1>{{ errmsg }}</h1>
+            <br>
+            Please return <a href="{% url 'mainLobby:index' %}">--></a>
+            <br>
+            <a href="javascript:window.opener=null;window.open('','_self');window.close();">
+            <button type="button"class="btn btn-primary btn-lg">关闭页面</button>
+        </a>
+        </div>
+    </div>
+{% endblock main_body%}
+

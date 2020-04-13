@@ -1,0 +1,54 @@
+{% extends 'base_model.html' %}
+{% load static %}
+
+{% block title %}
+歌手列表
+{% endblock %}
+
+{% block main_body %}
+<div class="container">
+    <a href="{% url 'music:music_demo' %}">
+        <button type="button" class="btn btn-primary btn-lg">返回推荐首页</button>
+    </a>
+        <div align="left">
+            <h1>歌手列表<small>共有{{ s_i|length }}位歌手入驻小破站😄😄😄</small></h1>
+        </div>
+{##}
+{#    {% for singer in s_i %}#}
+{#        <div class="xnt">#}
+{#            <div class="box">#}
+{#                <div class="img">#}
+{#                    <a href="{% url 'singer:singer_details' singer.id %}">#}
+{#                        <img src="{{ singer.image_URL }}" class="img-circle" width="120" height="120">#}
+{#                    </a>#}
+{#                </div>#}
+{##}
+{#                <p>#}
+{#                    <h4 class="form-signin-heading">{{ singer.singer_name }}</h4>#}
+{#                </p>#}
+{#            </div>#}
+{#        </div>#}
+{#    {% endfor %}#}
+</div>
+
+    <div class="container">
+        <div class="list-group">
+            {% for singer in s_i %}
+              <a href="{% url 'singer:singer_details' singer.id %}" class="list-group-item">
+{#              <a href="{% url 'singer:singer_details' singer.id %}" class="list-group-item" style="background:url({% static 'images/music/bi.jpg' %}) no-repeat;background-size:1500px 600px;">#}
+                <h4 class="list-group-item-heading">
+                    <img src="{{ singer.image_URL }}" class="img-circle" width="100" height="100"> <font size="20" face="仿宋">{{ singer.singer_name }}</font>
+                </h4>
+                <p class="list-group-item-text">
+                    简介：<font size="4" face="仿宋">{{ singer.singer_info|truncatechars:150 }} ... ...</font>
+                </p>
+              </a><br>
+            {% endfor %}
+        </div>
+
+    <a href="{% url 'music:music_demo' %}">
+        <button type="button" class="btn btn-primary btn-lg">返回推荐首页</button>
+    </a>
+    </div>
+
+{% endblock %}

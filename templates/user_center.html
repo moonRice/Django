@@ -1,0 +1,15 @@
+{% extends 'user_center_model.html' %}
+
+{% block title %}
+账户信息
+{% endblock title %}
+
+{% block info %}
+    用户名：{{ user.username }}<br>
+    {% if address %}
+    联系方式：{{ address.phone }}<br>
+    收货地址：{{ address.addr }}<br>
+    {% else %}
+    请添加默认收货地址！
+    {% endif %}
+{% endblock %}

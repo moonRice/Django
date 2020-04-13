@@ -1,0 +1,35 @@
+{# 页首登陆注册 #}
+{% extends 'base_model.html' %}
+
+{% block title %}
+    音乐推荐
+{% endblock title %}
+
+{# 主体部分块 #}
+{% block main_body %}
+    <div class="container">
+    <div align="center">
+        欢迎来到音乐推荐平台，现在是<h1>{{ now_time }}</h1>
+        <br>
+打横幅<br>
+        <!-- Stack the columns on mobile by making one full-width and the other half-width -->
+<div class="row">
+  <div class="col-xs-12 col-md-8">.col-xs-12 .col-md-8</div>
+  <div class="col-xs-6 col-md-4">.col-xs-6 .col-md-4</div>
+</div>
+
+<!-- Columns start at 50% wide on mobile and bump up to 33.3% wide on desktop -->
+<div class="row">
+  <div class="col-xs-6 col-md-4">.col-xs-6 .col-md-4</div>
+  <div class="col-xs-6 col-md-4">.col-xs-6 .col-md-4</div>
+  <div class="col-xs-6 col-md-4">.col-xs-6 .col-md-4</div>
+</div>
+
+<!-- Columns are always 50% wide, on mobile and desktop -->
+<div class="row">
+  <div class="col-xs-6">.col-xs-6</div>
+  <div class="col-xs-6">.col-xs-6</div>
+</div>
+    </div>
+    </div>
+{% endblock main_body %}

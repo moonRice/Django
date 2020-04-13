@@ -1,0 +1,1 @@
+default_app_config = 'apps.music_apps.sing.apps.SingConfig'

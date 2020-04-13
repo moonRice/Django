@@ -1,0 +1,50 @@
+{% extends 'base_model.html' %}
+
+{% block title %}
+{{ s_i.singer_name }}的主页
+{% endblock %}
+
+{% block main_body %}
+    <div class="container">
+        <a href="{% url 'singer:show_singer_list' %}">
+            <button type="button" class="btn btn-primary btn-lg">返回歌手列表</button>
+        </a>
+        <div align="center">
+            <img src="{{ s_i.image_URL }}" class="img-circle" width="200" height="200">
+        <br>
+            <font size="20" face="仿宋">{{ s_i.singer_name }}</font><br>
+            {% for type in s_t %}
+            {{ type }}
+            {% endfor %}
+        </div>
+        <br>
+
+            <div class="container">
+
+                <div class="row">
+
+                    <div class="col-md-3">
+                    <div align="center"><h3>专辑信息</h3></div>
+                        {% for zhuanji in s_zj %}
+                            <div align="center">
+                            <a href="{% url 'songs:songs_lists' zhuanji.id %}?singer_id={{ s_i.id }}" target="_blank">
+                                <img src="{{ zhuanji.image_URL }}" class="img-thumbnail" height="120" width="120"></a>
+                                <h6>{{ zhuanji }}</h6>
+                            </div>
+                            <br>
+                        {% endfor %}
+                    </div>
+                    <div class="col-md-9">
+                        {{ s_i.singer_info|safe }}
+                    </div>
+                </div>
+
+
+            </div>
+        <a href="{% url 'singer:show_singer_list' %}">
+            <button type="button" class="btn btn-primary btn-lg">返回歌手列表</button>
+        </a>
+    </div>
+
+
+{% endblock %}

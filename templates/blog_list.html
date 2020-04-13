@@ -1,0 +1,16 @@
+{% extends 'base_model.html' %}
+
+{% block title %}
+    文章列表
+{% endblock title %}
+
+{% block main_body %}
+    <div class="container">
+        <div align="center">
+        <h1>文章列表<small>共有{{ all_blog_list|length }}篇博文</small></h1>
+        </div>
+         <br>
+    {% for blog in all_blog_list %}
+        <h3><a href="{% url 'MyBlog:blog_details' blog.id %}">{{ blog.id }}、{{ blog.title }}</a> <small>  作者：{{ blog.author }}  标签：{{ blog.blog_type }}</small></h3>
+    {% endfor %}</div>
+{% endblock main_body%}

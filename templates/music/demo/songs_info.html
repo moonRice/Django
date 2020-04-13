@@ -1,0 +1,53 @@
+{% extends 'base_model.html' %}
+
+{% block title %}
+{{ s_i.song_name }}-歌曲详情
+{% endblock %}
+
+{% block in_style %}
+    <style>
+        .rotation {
+            -webkit-transform: rotate(360deg);
+            animation: rotation 10s linear infinite;
+            -moz-animation: rotation 10s linear infinite;
+            -webkit-animation: rotation 10s linear infinite;
+            -o-animation: rotation 10s linear infinite;
+        }
+        @-webkit-keyframes rotation {
+            from {
+            -webkit-transform: rotate(0deg);
+            }
+            to {
+                -webkit-transform: rotate(360deg);
+            }
+        }
+    </style>
+{% endblock %}
+
+{% block main_body %}
+    <div class="container">
+        <a href="javascript:window.opener=null;window.open('','_self');window.close();">
+            <button type="button"class="btn btn-primary btn-lg">关闭页面</button>
+        </a>
+        <div align="center">
+            <img src="{{ s_i.image }}" class="img-circle rotation" width="200" height="200">
+        <br>
+            <font size="20" face="仿宋">{{ s_i.song_name }}</font><br>
+            {% for t in type %}
+            {{ t }}
+            {% endfor %}
+            <br>
+            <h3>{{ s_i.song_auth }}</h3>
+        <br>
+        {{ if.url|safe }}
+        </div>
+        <br>
+
+
+        <a href="javascript:window.opener=null;window.open('','_self');window.close();">
+            <button type="button"class="btn btn-primary btn-lg">关闭页面</button>
+        </a>
+    </div>
+
+
+{% endblock %}

@@ -1,0 +1,53 @@
+{% extends 'base_model.html' %}
+{% load static %}
+
+{% block title %}
+{{ zhuanji_img.name}}的歌曲列表
+{% endblock %}
+
+{% block main_body %}
+    <div class="container">
+
+        <a href="javascript:window.opener=null;window.open('','_self');window.close();">
+            <button type="button"class="btn btn-primary btn-lg">关闭页面</button>
+        </a>
+
+        <div align="center">
+            <img src="{{ zhuanji_img.image_URL }}" class="img-thumbnail" width="200" height="200">
+            <br>
+            <font size="20" face="仿宋">{{ zhuanji_img.name }}</font><br>
+        </div>
+        <br>
+
+            <div class="container">
+            <div align="center">
+            <h1>歌曲列表</h1>
+            </div>
+            <div class="list-group">
+            {% for sl in songs_list %}
+              <a href="{% url 'songs:songs_details' sl.id %}" class="list-group-item" target="_blank">
+{#              <a href="{% url 'singer:singer_details' singer.id %}" class="list-group-item" style="background:url({% static 'images/music/bi.jpg' %}) no-repeat;background-size:1500px 600px;">#}
+                <h4 class="list-group-item-heading">
+                    <img src="{{ sl.image }}" class="img-circle" width="100" height="100"> <font size="20" face="仿宋">{{ sl.song_name }}</font>
+                </h4>
+                <p class="list-group-item-text">
+                    歌手：<font size="4" face="仿宋">{{ sl.song_auth }}</font>
+                    类型：
+                    {% for t in type %}
+                        <font size="4" face="仿宋">{{ t }}</font>
+                    {% endfor %}
+                </p>
+              </a><br>
+            {% endfor %}
+        </div>
+            </div>
+
+        <a href="javascript:window.opener=null;window.open('','_self');window.close();">
+                    <button type="button"class="btn btn-primary btn-lg">关闭页面</button>
+                </a>
+            </div>
+
+    </div>
+
+
+{% endblock %}

@@ -1,0 +1,77 @@
+{% extends 'base_model.html' %}
+
+{% block title %}
+登录
+{% endblock title %}
+
+{% block style %}
+body {
+  padding-top: 50px;
+  padding-bottom: 40px;
+}
+
+.form-signin {
+  max-width: 330px;
+  padding: 15px;
+  margin: 0 auto;
+}
+.form-signin .form-signin-heading,
+.form-signin .checkbox {
+  margin-bottom: 10px;
+}
+.form-signin .checkbox {
+  font-weight: normal;
+}
+.form-signin .form-control {
+  position: relative;
+  height: auto;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 10px;
+  font-size: 16px;
+}
+.form-signin .form-control:focus {
+  z-index: 2;
+}
+.form-signin input[type="email"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.form-signin input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+{% endblock %}
+
+{% block main_body %}
+{# 不设置action时，提交表单时，会向浏览器地址栏提交数据 #}
+    <div class="container">
+    <div align="center">
+        <form class="form-signin" method="post">
+        {% csrf_token %}
+        <h3 class="form-signin-heading">游客，请登录</h3><br>
+            <label class="sr-only">账号</label>
+            <input type="text" name="username" value="{{ username }}" class="form-control" {% if username_errmsg %}placeholder="{{ username_errmsg }}"{% else %}placeholder="请输入用户名"{% endif %}>
+{#            <font color="red">{{ username_errmsg }}</font>#}
+            <label class="sr-only">密码</label>
+            <input type="password" name="password" class="form-control" {% if password_errmsg %}placeholder="{{ password_errmsg }}"{% else %}placeholder="请输入密码"{% endif %}>
+{#            <font color="red">{{ password_errmsg }}</font>#}
+            <label>
+        <input type="checkbox" name="remember" {{ checked }}> 记住用户名
+            </label>
+                <br>
+        <button class="btn btn-lg btn-primary btn-block">登录</button><br>
+
+        <label>还没账号？前往<a href="/user/register">注册。。。</a></label><br>
+            <font color="red">{{ errmsg }}</font>
+            <br>
+            <br>
+        </form>
+    </div>
+    </div>
+
+
+{% endblock main_body %}

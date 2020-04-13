@@ -1,0 +1,49 @@
+{% extends 'base_model.html' %}
+
+{% load static %}
+
+{% block in_style %}
+    <link rel="stylesheet" href="{% static 'css/editormd.preview.css' %}">
+{% endblock in_style %}
+
+{% block style %}
+
+{% endblock style %}
+
+{% block in_script %}
+    <script src="{% static 'js/lib/marked.min.js' %}"></script>
+    <script src="{% static 'js/editormd.js' %}"></script>
+    <script src="{% static 'js/lib/prettify.min.js' %}"></script>
+    <script src="{% static 'js/jquery-3.4.1.js' %}"></script>
+{% endblock in_script %}
+
+{% block script %}
+
+{% endblock script %}
+
+{% block title %}
+    文章：{{ blog_details.title }}
+{% endblock title %}
+
+
+
+
+{% block main_body %}
+    <div class="container">
+    <div align="center">
+    <h1>{{ blog_details.title }}</h1>
+    <h3>作者：{{ blog_details.author }} | 更新时间：{{ blog_details.update_time }}</h3>
+    </div>
+
+
+
+    {{ blog_details.content|safe }}
+    </div>
+    <br>
+    <br>
+    <br>
+    <hr>
+
+
+
+{% endblock main_body%}

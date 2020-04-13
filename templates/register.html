@@ -1,0 +1,80 @@
+{% extends 'base_model.html' %}
+
+{% block title %}
+注册
+{% endblock title %}
+
+{% block style %}
+body {
+  padding-top: 50px;
+  padding-bottom: 40px;
+}
+
+.form-signin {
+  max-width: 330px;
+  padding: 15px;
+  margin: 0 auto;
+}
+.form-signin .form-signin-heading,
+.form-signin .checkbox {
+  margin-bottom: 10px;
+}
+.form-signin .checkbox {
+  font-weight: normal;
+}
+.form-signin .form-control {
+  position: relative;
+  height: auto;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 10px;
+  font-size: 16px;
+}
+.form-signin .form-control:focus {
+  z-index: 2;
+}
+.form-signin input[type="email"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.form-signin input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+{% endblock %}
+
+{% block main_body %}
+    <div class="container">
+    <div align="center">
+        <form class="form-signin" action="/user/register" method="post">
+            {% csrf_token %}
+            <h3 class="form-signin-heading">注册账号</h3>
+            <br>
+
+            <label class="sr-only"><font color={{ color_username }}>用户名</font>：</label>
+            <input type="text" name="username" id="username" class="form-control" {% if email_errmsg %}placeholder="{{ username_errmsg }}"{% else %}placeholder="请输入登录用的用户名"{% endif %}>
+{#            <font color="red">{{ username_errmsg }}</font>#}
+
+            <label class="sr-only"><font color={{ color_email }}>邮箱</font>：</label>
+            <input type="email" name="email" id="email" class="form-control" {% if email_errmsg %}placeholder="{{ email_errmsg }}"{% else %}placeholder="请输入能接收激活链接的邮箱"{% endif %}>
+{#            <font color="red">{{ email_errmsg }}</font>#}
+
+            <label class="sr-only"><font color={{ color_password }}>密码</font>：</label>
+            <input type="password" name="password" id="password" class="form-control" {% if password_errmsg %}placeholder="{{ password_errmsg }}"{% else %}placeholder="请输入密码"{% endif %}>
+{#            <font color="red">{{ password_errmsg }}</font>#}
+
+            <label>
+            <input type="checkbox" name="allow" id="allow"><font color={{ color_allow }}> 确认“<abbr title="请不要触碰法律底线！！！">用户协议</abbr> ”</font>
+            </label><br>
+            <font color="red">{{ allow_errmsg }}</font><br>
+            <button class="btn btn-lg btn-primary btn-block" title="暂未开放注册，还请等等呗~">注册</button><br>
+            <label>已有账号？前往<a href="/user/login">登录。。。</a></label><br>
+            <font color="red">{{ errmsg }}</font>
+            <br>
+            <br>
+        </form>
+    </div></div>
+{% endblock main_body %}

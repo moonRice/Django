@@ -1,0 +1,37 @@
+{% extends 'user_center_model.html' %}
+
+{% block title %}
+地址管理
+{% endblock %}
+
+{% block add %}
+    <div align="center"><h3>默认地址</h3></div>
+    {% if addr %}
+    详细地址：{{ addr.addr }}<br>
+    收件人：{{ addr.receiver }}<br>
+    邮政编码：{{ addr.zip_code }}<br>
+    联系电话：{{ addr.phone }}<br>
+    {% else %}
+    请添加一个默认地址+++
+    {% endif %}
+    <hr>
+    <form method="post">
+    {% csrf_token %}
+    <label class="col-sm-2 control-label">收件人</label>
+        <input type="text" name="sjr"><br><br>
+    <label class="col-sm-2 control-label">详细地址</label>
+        <input type="text" name="xxdz"><br><br>
+    <label class="col-sm-2 control-label">邮编</label>
+        <input type="text" name="yb"><br><br>
+        <label class="col-sm-2 control-label"><font color="{{ color_lxdh }}">联系电话</font></label>
+        <input type="text" name="lxdh">
+    <br><br><br>
+    <div align="center">
+        <button class="btn btn-info" title="提交你的地址信息~">提交信息</button>
+        <br>
+        <font color="red">
+            {{ err_msg }}
+        </font>
+    </div>
+    </form>
+{% endblock %}

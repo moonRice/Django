@@ -1,0 +1,1 @@
+default_app_config = 'apps.cangku.ck_index.apps.CkIndexConfig'
