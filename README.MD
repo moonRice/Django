@@ -1,3 +1,7 @@
+---
+typora-copy-images-to: static\images\readme
+---
+
 # 基于Django的三大综合平台
 
 ------
@@ -78,11 +82,13 @@ class yuangong(models.Model):
 
 ​		已经完成的：
 
-```pyt
 1、数据库模型类的设计较为完善
 
+
+
+![image-20200416215231195](H:\GitHub\tongyong - Github Version\Django\static\images\readme\image-20200416215231195.png)
+
 2、数据的操作（完全基于后台管理）
-```
 
 ​		未完成的：
 
@@ -104,11 +110,11 @@ class yuangong(models.Model):
 
 ​		已经完成的：
 
-```pyt
 1、数据库模型类的设计较为完善
 
+![image-20200416213957807](H:\GitHub\tongyong - Github Version\Django\static\images\readme\image-20200416213957807.png)
+
 2、数据的操作（完全基于后台管理）
-```
 
 ​		未完成的：
 
@@ -132,11 +138,11 @@ class yuangong(models.Model):
 
 ​		已经完成的：
 
-```pyt
 1、数据库模型类的设计较为完善
 
+![image-20200416215251215](H:\GitHub\tongyong - Github Version\Django\static\images\readme\image-20200416215251215.png)
+
 2、无
-```
 
 ​		未完成的：
 
