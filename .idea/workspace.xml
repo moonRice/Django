@@ -7,73 +7,43 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="DatabaseView">
-    <option name="SHOW_INTERMEDIATE" value="true" />
-    <option name="GROUP_DATA_SOURCES" value="true" />
-    <option name="GROUP_SCHEMA" value="true" />
-    <option name="GROUP_CONTENTS" value="false" />
-    <option name="SORT_POSITIONED" value="false" />
-    <option name="SHOW_EMPTY_GROUPS" value="false" />
-    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
-    <option name="HIDDEN_KINDS">
-      <set />
-    </option>
-    <expand>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="阿里云" type="feb32156:DbDataSourceImpl" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="阿里云" type="feb32156:DbDataSourceImpl" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="阿里云" type="feb32156:DbDataSourceImpl" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="tongyong: schema" type="76f4a085:MysqlImplModel$Schema" />
-      </path>
-    </expand>
-    <select />
-  </component>
   <component name="DjangoConsoleOptions" custom-start-script="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)">
     <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)" />
-  </component>
-  <component name="FavoritesManager">
-    <favorites_list name="tongyong" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="JavaScript File" />
+        <option value="CSS File" />
         <option value="Python Script" />
         <option value="HTML File" />
-        <option value="JavaScript File" />
       </list>
     </option>
   </component>
   <component name="ProjectId" id="1Z1p87nIHmbOlBKglyeLTLKdMfg" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
     <property name="DatabaseDriversLRU" value="mysql" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="jsx.switch.disabled" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/apps/models" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/templates/bx" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
+    <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="H:\GitHub\tongyong\templates\bx" />
+      <recent name="H:\GitHub\tongyong\templates\ck" />
+      <recent name="H:\GitHub\tongyong\mytst" />
       <recent name="H:\GitHub\tongyong\apps\models" />
       <recent name="H:\GitHub\tongyong\apps\bx\bx_index" />
-      <recent name="H:\GitHub\tongyong\apps\cangku\ck_yuangong" />
-      <recent name="H:\GitHub\tongyong\apps\cangku\ck_index" />
-      <recent name="H:\GitHub\tongyong\apps\cangku\ck_gongsi" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="H:\GitHub\tongyong\apps\bx" />
@@ -83,7 +53,7 @@
       <recent name="H:\GitHub\tongyong\static" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.Debug">
+  <component name="RunManager" selected="Django Server.tongyong">
     <configuration name="Debug" type="PythonConfigurationType" factoryName="Python">
       <module name="tongyong" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -100,6 +70,50 @@
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/manage.py" />
       <option name="PARAMETERS" value="runserver" />
       <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="KNN" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="tongyong" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/推荐算法/KNN" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/推荐算法/KNN/KNN.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="PythonConfigurationType" factoryName="Python">
+      <module name="tongyong" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
       <option name="REDIRECT_INPUT" value="false" />
@@ -153,12 +167,14 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Django server.tongyong" />
+      <item itemvalue="Django Server.tongyong" />
       <item itemvalue="Python.Debug" />
+      <item itemvalue="Python.KNN" />
       <item itemvalue="Python.auto" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.KNN" />
         <item itemvalue="Python.auto" />
       </list>
     </recent_temporary>
@@ -230,13 +246,35 @@
       <workItem from="1586693790889" duration="4670000" />
       <workItem from="1586748845195" duration="12230000" />
       <workItem from="1586781680794" duration="2225000" />
+      <workItem from="1586937204794" duration="859000" />
+      <workItem from="1586940116221" duration="4183000" />
+      <workItem from="1587000518599" duration="4555000" />
+      <workItem from="1587123898208" duration="1576000" />
+      <workItem from="1587204449108" duration="2758000" />
+      <workItem from="1587293664574" duration="3707000" />
+      <workItem from="1587360629843" duration="8334000" />
+      <workItem from="1587443596399" duration="7680000" />
+      <workItem from="1587536539487" duration="2808000" />
+      <workItem from="1587560545662" duration="602000" />
+      <workItem from="1587607293178" duration="12230000" />
+      <workItem from="1587693072864" duration="3923000" />
+      <workItem from="1587883466905" duration="8114000" />
+      <workItem from="1587972688479" duration="3466000" />
+      <workItem from="1588049863283" duration="31324000" />
+      <workItem from="1588165174747" duration="6526000" />
+      <workItem from="1588213306805" duration="14950000" />
+      <workItem from="1588417461747" duration="3989000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="2" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="651" y="274" key="#Notifications" timestamp="1587360940166">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="651" y="274" key="#Notifications/0.0.1536.824@0.0.1536.824" timestamp="1587360940166" />
     <state x="183" y="94" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1585880544630">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -247,30 +285,38 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="731" y="369" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1584172728661" />
+    <state x="449" y="147" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1586939690577">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="449" y="147" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1536.824@0.0.1536.824" timestamp="1586939690577" />
+    <state x="499" y="158" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1587458233640">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="499" y="158" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1587458233640" />
     <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1585880522300">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824/1920.0.600.760@0.0.1536.824" timestamp="1584953383215" />
     <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1585880522300" />
-    <state width="1493" height="178" key="GridCell.Tab.0.bottom" timestamp="1586012173811">
+    <state width="1491" height="224" key="GridCell.Tab.0.bottom" timestamp="1588309744589">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="178" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1586012173811" />
+    <state width="1491" height="224" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1588309744589" />
     <state width="1877" height="218" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1584189375827" />
-    <state width="1493" height="178" key="GridCell.Tab.0.center" timestamp="1586012173811">
+    <state width="1491" height="224" key="GridCell.Tab.0.center" timestamp="1588309744589">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="178" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1586012173811" />
+    <state width="1491" height="224" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1588309744589" />
     <state width="1877" height="218" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1584189375826" />
-    <state width="1493" height="178" key="GridCell.Tab.0.left" timestamp="1586012173810">
+    <state width="1491" height="224" key="GridCell.Tab.0.left" timestamp="1588309744589">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="178" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1586012173810" />
+    <state width="1491" height="224" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1588309744589" />
     <state width="1877" height="218" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1584189375826" />
-    <state width="1493" height="178" key="GridCell.Tab.0.right" timestamp="1586012173811">
+    <state width="1491" height="224" key="GridCell.Tab.0.right" timestamp="1588309744589">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="178" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1586012173811" />
+    <state width="1491" height="224" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1588309744589" />
     <state width="1877" height="218" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1584189375826" />
     <state width="1493" height="178" key="GridCell.Tab.1.bottom" timestamp="1586012173811">
       <screen x="0" y="0" width="1536" height="824" />
@@ -292,9 +338,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="283" height="477" key="HiddenNamespacesPopup/0.0.1536.824@0.0.1536.824" timestamp="1585119529795" />
-    <state x="513" y="195" key="SettingsEditor" timestamp="1584588189564">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="-6" y="70" key="SettingsEditor" timestamp="1588165221636">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
+    <state x="-6" y="70" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1588165221636" />
     <state x="0" y="165" key="SettingsEditor/0.0.1920.1040/1920.0.1200.1560@0.0.1920.1040" timestamp="1584075632146" />
     <state x="513" y="195" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1584588189564" />
     <state x="454" y="236" key="com.intellij.ide.util.TipDialog" timestamp="1584935127416">
@@ -319,10 +366,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="688" y="399" width="716" height="308" key="org.intellij.images.editor.actions.BackgroundImageDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1584587969597" />
-    <state x="819" y="182" width="672" height="538" key="search.everywhere.popup" timestamp="1586007047909">
+    <state x="819" y="182" width="672" height="538" key="search.everywhere.popup" timestamp="1588418735473">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="819" y="182" width="672" height="538" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1586007047909" />
+    <state x="819" y="182" width="672" height="538" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1588418735473" />
     <state x="1024" y="230" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/1920.0.1200.1560@0.0.1920.1040" timestamp="1584081144184" />
     <state x="1024" y="230" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1584514474364" />
     <state x="491" y="323" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1584948024558">
@@ -331,7 +378,7 @@
     <state x="491" y="323" key="vcs.readOnlyHandler.ReadOnlyStatusDialog/0.0.1536.824@0.0.1536.824" timestamp="1584948024558" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/tongyong$Debug.coverage" NAME="Debug Coverage Results" MODIFIED="1586008826437" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/tongyong$auto.coverage" NAME="auto Coverage Results" MODIFIED="1584184518762" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/tongyong$Debug.coverage" NAME="Debug Coverage Results" MODIFIED="1587365191911" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

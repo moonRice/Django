@@ -64,6 +64,8 @@ INSTALLED_APPS = [
 
     'apps.bx.bx_index',
 
+    'mytst',
+
 ]
 
 MIDDLEWARE = [
@@ -173,7 +175,7 @@ AUTHENTICATION_BACKENDS = ['django.contrib.auth.backends.AllowAllUsersModelBacke
 CACHES = {
     "default": {
         "BACKEND": "django_redis.cache.RedisCache",
-        "LOCATION": "redis://" + options49.redis_cache_server_host + ":" + options49.redis_cache_server_port + "/" + options49.redis_cache_server_numb,
+        "LOCATION": "redis://:" + options49.redis_cache_server_pass + "@" + options49.redis_cache_server_host + ":" + options49.redis_cache_server_port + "/" + options49.redis_cache_server_numb,
         "OPTIONS": {
             "CLIENT_CLASS": "django_redis.client.DefaultClient",
         }

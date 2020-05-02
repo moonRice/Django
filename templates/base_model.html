@@ -10,9 +10,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+{#<link rel="stylesheet" href="{% static 'css/style.css' %}">#}
 {#    <link rel="stylesheet" href="{% static 'css/新拟态.css' %}">#}
     <script src="{% static 'js/jquery-3.4.1.js' %}"></script>
     <script src="{% static 'js/bootstrap.js' %}"></script>
+<script src="{% static 'js/echarts.js' %}"></script>
 
 {# 代码高亮 #}
     <link rel="stylesheet" type="text/css" href="{% static 'css/code.css' %}">
@@ -23,21 +25,112 @@
 
     {# 网页标题内容快 #}
     <title>{% block title %}{% endblock title %}</title>
-
-    <style>
+{% if user.username == 'lizhixin' %}
+<style>
         body{
             padding-top: 50px;
             background-size: cover;
-            background-color: #eee;
+            background-color:#eeee;
         }
         .starter{
             padding: 40px 15px;
             text-align: center;
         }
+</style>
+
+{% elif user.username == 'zhengyang' %}
+<style>
+        body{
+            padding-top: 50px;
+            background-size: cover;
+            background-color:#eee;
+        }
+        .starter{
+            padding: 40px 15px;
+            text-align: center;
+        }
+</style>
+
+{% elif user.username == 'wuhuaqiang' %}
+<style>
+        body{
+            padding-top: 50px;
+            background-size: cover;
+            background-color:whitesmoke;
+        }
+        .starter{
+            padding: 40px 15px;
+            text-align: center;
+        }
+</style>
+{% elif user.username == 'admin' %}
+<style>
+        body{
+            padding-top: 50px;
+            background-size: cover;
+            background-color:gold;
+        }
+        .starter{
+            padding: 40px 15px;
+            text-align: center;
+        }
+</style>
+{% else %}
+<style>
+        body{
+            padding-top: 50px;
+            background-size: cover;
+            background-color:#eee;
+        }
+        .starter{
+            padding: 40px 15px;
+            text-align: center;
+        }
+</style>
+{% endif %}
+<style>
+body {
+  padding-top: 50px;
+  padding-bottom: 40px;
+}
+
+.form-signin {
+  max-width: 330px;
+  padding: 15px;
+  margin: 0 auto;
+}
+.form-signin .form-signin-heading,
+.form-signin .checkbox {
+  margin-bottom: 10px;
+}
+.form-signin .checkbox {
+  font-weight: normal;
+}
+.form-signin .form-control {
+  position: relative;
+  height: auto;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 10px;
+  font-size: 16px;
+}
+.form-signin .form-control:focus {
+  z-index: 2;
+}
+.form-signin input[type="email"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.form-signin input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
         {% block style %}
         {% endblock style %}
-    </style>
-
+</style>
 
 {% block in_script %}
 {% endblock in_script %}
@@ -47,7 +140,8 @@
 </script>
 </head>
 <body>
-    <nav class="navbar navbar-inverse navbar-fixed-top navbar-default" role="navigation">
+{#navbar-inverse#}
+    <nav class="navbar  {% if user.username == 'wuhuaqiang' %}navbar-inverse{% endif %} navbar-fixed-top navbar-default" role="navigation">
         <div class="container-fluid">
             <div class="navbar-header">
 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
@@ -56,7 +150,19 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a href="#" class="navbar-brand">这是一个网站</a>
+                <a href="#" class="navbar-brand">
+                    {% if user.username == 'lizhixin' %}
+                        在线仓库管理平台
+                    {% elif user.username == 'zhengyang' %}
+                        在线音乐
+                    {% elif user.username == 'wuhuaqiang' %}
+                        保险在线销售
+                    {% elif user.username == 'admin' %}
+                        超级管理员
+                    {% else %}
+                        欢迎使用
+                    {% endif %}
+                </a>
             </div>
 
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -67,45 +173,193 @@
 
                 {% if user.username == 'zhengyang' %}
 {#                    <li {% if page == 'music' %}class="active"{% endif %}><a href="{% url 'music:music_index' %}">音乐推荐</a></li>#}
+                    <li {% if page == 'music_demo' %}class="active"{% endif %}><a href="{% url 'music:music_demo' %}">音乐平台</a></li>
 
-                {% elif user.username == 'wuhuaqiang' %}
-                    <li><a href="{% url 'baoxian:idx' %}">保险销售</a></li>
+                {% elif user.username == 'wuhuaqiang' %}<!-- 客户 -->
+                    <li {% if page == 'bx_idx' %}class="active"{% endif %}><a href="{% url 'baoxian:idx' %}">保险商城</a></li>
+                    <li {% if page == 'bx_dd_list' %}class="active"{% endif %}><a href="{% url 'baoxian:dd_list' %}">查看订单</a></li>
+                {% elif user.username == 'wuhuaqiang_ceo' %}<!-- 总经理 -->
+                    <li {% if page == 'bx_data_view' %}class="active"{% endif %}><a href="{% url 'baoxian:data_view' %}">查看数据</a></li>
+                    <li {% if page == 'bx_dd_list' %}class="active"{% endif %}><a href="{% url 'baoxian:dd_list' %}">查看订单</a></li>
+                    <li {% if page == 'bx_data_manage' %}class="active"{% endif %}><a href="{% url 'baoxian:data_manage' %}">数据管理</a></li>
+                {% elif user.username == 'wuhuaqiang_sa' %}<!-- 销售员 -->
+                    <li {% if page == 'bx_idx' %}class="active"{% endif %}><a href="{% url 'baoxian:idx' %}">保险商城</a></li>
+                    <li {% if page == 'bx_baoxian_manage' %}class="active"{% endif %}><a href="{% url 'baoxian:baoxian_manage' %}">保险管理</a></li>
 
-                {% elif user.username == 'Lizhixin' %}
-                    <li><a href="{% url 'cangku:index' %}">仓库管理</a></li>
+                {% elif user.username == 'lizhixin' %}<!-- 采购员、客户 -->
+{#                    <li {% if page == 'io' %}class="active"{% endif %}><a href="{% url 'ck_cangku:ioe' %}">仓库总览</a></li>#}
+                    <li {% if page == 'cangku' %}class="active"{% endif %}><a href="{% url 'cangku:idx' %}">仓库总览</a></li>
+                    <li {% if page == 'good_list' %}class="active"{% endif %}><a href="{% url 'ck_cangku:good_list' %}">采购平台</a></li>
+                    <li {% if page == 'cangku' %}class="active"{% endif %}><a href="{% url 'cangku:idx' %}">查看订单</a></li>
+                {% elif user.username == 'lizhixin_ceo' %}<!-- 老板 -->
+                    <li {% if page == 'cangku' %}class="active"{% endif %}><a href="{% url 'cangku:idx' %}">仓库总览</a></li>
+                    <li {% if page == 'ck_cangku' %}class="active"{% endif %}><a href="{% url 'ck_cangku:idx' %}">仓库管理</a></li>
+                    <li {% if page == 'ck_yuangong' %}class="active"{% endif %}><a href="{% url 'ck_yuangong:idx' %}">员工管理</a></li>
+                {% elif user.username == 'lizhixin_sec' %}<!-- 安保 -->
+                    <li {% if page == 'cangku' %}class="active"{% endif %}><a href="{% url 'cangku:idx' %}">仓库总览</a></li>
+                    <li {% if page == 'cangku' %}class="active"{% endif %}><a href="{% url 'cangku:idx' %}">安保计划</a></li>
+                {% elif user.username == 'lizhixin_io' %}<!-- 进出货 -->
+{#                    <li {% if page == 'io' %}class="active"{% endif %}><a href="{% url 'ck_cangku:ioe' %}">仓库总览</a></li>#}
+                    <li {% if page == 'cangku' %}class="active"{% endif %}><a href="{% url 'cangku:idx' %}">仓库总览</a></li>
+                    <li {% if page == 'in' %}class="active"{% endif %}><a href="{% url 'ck_cangku:in' %}">进货</a></li>
+                    <li {% if page == 'out' %}class="active"{% endif %}><a href="{% url 'ck_cangku:out' %}">出货</a></li>
 
                 {% elif user.username == 'admin' %}
+                    <li {% if page == 'cangku' %}class="active"{% endif %}><a href="{% url 'cangku:idx' %}">仓库总览</a></li>
+                    <li {% if page == 'ck_cangku' %}class="active"{% endif %}><a href="{% url 'ck_cangku:idx' %}">仓库管理</a></li>
+                    <li {% if page == 'ck_yuangong' %}class="active"{% endif %}><a href="{% url 'ck_yuangong:idx' %}">员工管理</a></li>
+
+                    <li><a href="{% url 'baoxian:idx' %}">保险销售</a></li>
+
+                    <li {% if page == 'music_demo' %}class="active"{% endif %}><a href="{% url 'music:music_demo' %}">音乐平台</a></li>
 {#                    <li><a href="{% url 'cangku:index' %}" target="_blank">仓库管理</a></li>#}
 {#                    <li {% if page == 'music' %}class="active"{% endif %}><a href="{% url 'music:music_index' %}">音乐推荐</a></li>#}
 {#                    <li><a href="{% url 'baoxian:idx' %}" target="_blank">保险销售</a></li>#}
 
                 {% endif %}
-                <li {% if page == 'cangku' %}class="active"{% endif %}><a href="{% url 'cangku:idx' %}">仓库首页【体验版】</a></li>
-                <li {% if page == 'ck_cangku' %}class="active"{% endif %}><a href="{% url 'ck_cangku:idx' %}">仓库管理【体验版】</a></li>
-                <li {% if page == 'ck_yuangong' %}class="active"{% endif %}><a href="{% url 'ck_yuangong:idx' %}">员工管理【体验版】</a></li>
-                <li {% if page == 'music_demo' %}class="active"{% endif %}><a href="{% url 'music:music_demo' %}">音乐推荐【体验版】</a></li>
+
+
                 <li {% if page == 'blog_list' %}class="active"{% endif %}><a href="{% url 'MyBlog:show_blog_list' %}">博客在线</a></li>
 {#                <li><a href="#">关于我们</a></li>#}
                 <li {% if page == 'update' %}class="active"{% endif %}><a href="{% url 'mainLobby:update_information' %}">更新日志</a></li>
                 </ul>
 {#            </div>#}
-            </div>
+
+
+
+
+
+
+
+{#<div class="btn-group navbar-form navbar-right">#}
+{#{% if user.is_authenticated %}#}
+{#<button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="欢迎你，{{ user.username }}">#}
+{#    {{ user.username }} <span class="badge">6</span>#}
+{#</button>#}
+{#    <ul class="dropdown-menu">#}
+{#    <li class="dropdown-header">个人消息</li>#}
+{#    <li><a href="{% url 'cangku:msg_show' %}">你有6条未读消息</a></li>#}
+{#    <li role="separator" class="divider"></li>#}
+{#    <li class="dropdown-header">账号信息</li>#}
+{#    <li><a href="{% url 'user:user_center' %}">账号信息</a></li>#}
+{#    <li><a href="{% url 'user:user_addr' %}">地址管理</a></li>#}
+{#    <li><a href="{% url 'user:user_ord' %}">查看历史记录</a></li>#}
+{#    <li role="separator" class="divider"></li>#}
+{#    <li class="dropdown-header">系统管理</li>#}
+{#    <li><a href="/admin" target="_blank">进入后台</a></li>#}
+{#    <li><a href="{% url 'user:logout' %}">退出登录</a></li>#}
+{#{% else %}#}
+{##}
+{##}
+{#<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="请登录或者注册~">#}
+{#    登陆 <span class="caret"></span>#}
+{#</button>#}
+{#    <ul class="dropdown-menu">#}
+{#    <li><a href="{% url 'user:login' %}">登陆</a></li>#}
+{#    <li><a href="{% url 'user:register' %}">注册</a></li>#}
+{#{% endif %}#}
+{#</ul>#}
+{#</div>#}
+
+
+
+
+
+
+<div class="btn-group navbar-form navbar-right">
+    {% if user.is_authenticated %}
+    <!-- Split button -->
+    <div class="btn-group">
+        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#userInfo">
+            {{ user.username }} <span class="badge">6</span>
+        </button>
+        <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span class="caret"></span>
+            <span class="sr-only">Toggle Dropdown</span>
+        </button>
+        <ul class="dropdown-menu">
+        <li class="dropdown-header">个人消息</li>
+        <li><a href="{% url 'cangku:msg_show' %}">你有6条未读消息</a></li>
+        <li role="separator" class="divider"></li>
+        <li class="dropdown-header">账号信息</li>
+        <li><a href="{% url 'user:user_center' %}">账号信息</a></li>
+        <li><a href="{% url 'user:user_addr' %}">地址管理</a></li>
+        <li><a href="{% url 'user:user_ord' %}">查看历史记录</a></li>
+        <li role="separator" class="divider"></li>
+        <li class="dropdown-header">系统管理</li>
+        <li><a href="/admin" target="_blank">进入后台</a></li>
+        <li><a href="{% url 'user:logout' %}">退出登录</a></li>
+        </ul>
+        {% else %}
+        <div class="btn-group">
+            <button type="button" class="btn btn-default" data-toggle="modal" data-target="#login">
+            登陆
+            </button>
+            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span class="caret"></span>
+                <span class="sr-only">Toggle Dropdown</span>
+            </button>
+            <ul class="dropdown-menu">
+            <li><a href="{% url 'user:login' %}">登陆</a></li>
+            <li><a href="{% url 'user:register' %}">注册</a></li>
+            </ul>
         </div>
+        {% endif %}
+    </div>
+</div>
+
+<!--搜索框-->
+{% if user.username == 'lizhixin' %}
+    <form class="navbar-form navbar-right">
+        <div class="form-group">
+            <input type="text" class="form-control" placeholder="请输入你要搜索的关键字" title="打字呗~">
+        </div>
+        <button type="submit" class="btn btn-default" title="暂未开发出来~">搜索</button>
+    </form>
+{% elif user.username == 'zhengyang' %}
+
+{% elif user.username == 'wuhuaqiang' %}
+    <form class="navbar-form navbar-right">
+        <div class="form-group">
+            <input type="text" class="form-control" placeholder="请输入你要搜索的关键字" title="打字呗~">
+        </div>
+        <button type="submit" class="btn btn-info" title="暂未开发出来~">搜索</button>
+    </form>
+{% elif user.username == 'admin' %}
+    <form class="navbar-form navbar-right">
+    <div class="form-group">
+        <input type="text" class="form-control" placeholder="请输入你要搜索的关键字" title="打字呗~">
+    </div>
+    <button type="submit" class="btn btn-info" title="暂未开发出来~">搜索</button>
+    </form>
+{% else %}
+
+{% endif %}
+
+
+
+
+</div>
+</div>
+</div>
     </nav>
     {# 网页顶部信息块 #}
     {% block head %}
-        {% if user.is_authenticated %}
-        <p style="text-align:right">
-            欢迎你，<a href="{% url 'user:user_center' %}">{{ user.username }}</a> | <a href="{% url 'user:logout' %}">退出登录</a>
-        </p>
-        {% else %}
-        <p style="text-align:right">
-            <a href="{% url 'user:login' %}">登录</a> | <a href="{% url 'user:register' %}">注册</a>
-        </p>
-        {% endif %}
-        <br>
-    {% endblock head %}
 
+{#        {% if user.is_authenticated %}#}
+{#        <p style="text-align:right">#}
+{#            欢迎你，<a href="{% url 'user:user_center' %}">{{ user.username }}</a> | <a href="{% url 'user:logout' %}">退出登录</a>#}
+{#        </p>#}
+{#        {% else %}#}
+{#        <p style="text-align:right">#}
+{#            <a href="{% url 'user:login' %}">登录</a> | <a href="{% url 'user:register' %}">注册</a>#}
+{#        </p>#}
+{#        {% endif %}#}
+{#        <br>#}
+
+
+    {% endblock head %}
+<br>
     {# 网页主体部分块 #}
     {% block main_body %}
     {% endblock main_body %}
@@ -114,10 +368,108 @@
     {%block copyright %}
     <hr>
         <p style="text-align:center">
-            超级牛逼的网站 ©2020 江苏·南京 sunRice~<br>
+            {% if user.username == 'lizhixin' %}
+                        在线仓库管理平台
+                    {% elif user.username == 'zhengyang' %}
+                        在线音乐
+                    {% elif user.username == 'wuhuaqiang' %}
+                        保险在线销售
+                    {% elif user.username == 'admin' %}
+                        超级管理员
+                    {% else %}
+                        欢迎使用
+                    {% endif %} ©2020<br>
 {#            加入我们 | 求助 | 关于我们 | #}
-            <a href="/admin" target="_blank">后台管理</a>
+{#            <a href="/admin" target="_blank">后台管理</a>#}
         </p>
     {% endblock copyright %}
+
+
+
+
+<!-- 登陆前 -->
+<script>
+$(function() {
+    $('#login').modal(
+        {
+            backdrop: 'static',
+            show: false
+        }
+    )
+});
+</script>
+{#<script>#}
+{#$(function() {#}
+{#    $('#login').on('hide.bs.modal',#}
+{#    function() {#}
+{#        alert('嘿，我听说您喜欢模态框...');#}
+{#    })#}
+{#});#}
+{#</script>#}
+<div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="loginTitle"  aria-hidden="true" data-backdrop=”static”>
+  <div class="modal-dialog modal-dialog-scrollable" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="loginTitle">请登录</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+    <div align="center">
+        <form class="form-signin" method="post" action="{% url 'user:login' %}">
+        {% csrf_token %}
+        <h3 class="form-signin-heading">登录</h3><br>
+            <label class="sr-only">账号</label>
+            <input type="text" name="username" value="{{ username }}" class="form-control" {% if username_errmsg %}placeholder="{{ username_errmsg }}"{% else %}placeholder="请输入用户名"{% endif %}>
+{#            <font color="red">{{ username_errmsg }}</font>#}
+            <label class="sr-only">密码</label>
+            <input type="password" name="password" class="form-control" {% if password_errmsg %}placeholder="{{ password_errmsg }}"{% else %}placeholder="请输入密码"{% endif %}>
+{#            <font color="red">{{ password_errmsg }}</font>#}
+            <label>
+        <input type="checkbox" name="remember" {{ checked }}> 记住用户名
+            </label>
+                <br>
+        <button class="btn btn-lg btn-primary btn-block">登录</button><br>
+            <font color="red">{{ errmsg }}</font>
+            <br>
+            <br>
+        </form>
+    </div>
+
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭窗口</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- 登陆后 -->
+<div class="modal fade" id="userInfo" tabindex="-1" role="dialog" aria-labelledby="userInfoTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="userInfoTitle">“{{ user.username }}“的账号信息</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        用户名：{{ user.username }}<br>
+        联系方式：{{ user.email }}<br>
+        创建时间：{{ user.create_time}}<br>
+        账号更新时间：{{ user.update_time }}<br><br>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭页面</button>
+            </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
 </body>
 </html>

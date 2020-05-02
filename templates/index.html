@@ -2,15 +2,74 @@
 {% extends 'base_model.html' %}
 
 {% block title %}
-    首页
+{% if user.username == 'lizhixin' %}
+在线仓库管理平台
+{% elif user.username == 'zhengyang' %}
+在线音乐
+{% elif user.username == 'wuhuaqiang' %}
+保险在线销售
+{% elif user.username == 'admin' %}
+超级管理员
+{% else %}
+欢迎使用
+{% endif %}
 {% endblock title %}
 
 {# 主体部分块 #}
 {% block main_body %}
-    <div class="container">
+{% if user.username == 'lizhixin' %}
+<div class="container">
+    <div align="center">
+        <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div align="center">
+                            <h1>账号说明</h1>
+                        </div>
+                    </div>
+                        <div class="panel-body">
+                            <ul class="list-group">
+                                <li class="list-group-item">lizhixin --> 采购员、客户</li>
+                                <li class="list-group-item">lizhixin_ceo --> 总经理</li>
+                                <li class="list-group-item">lizhixin_sec --> 安保人员</li>
+                                <li class="list-group-item">lizhixin_io --> 进出货管理员</li>
+                            </ul>
+                            <h3>
+                        </h3>
+                    </div>
+        </div>
+    </div>
+</div>
+{% elif user.username == 'zhengyang' %}
+
+{% elif user.username == 'wuhuaqiang' %}
+<div class="container">
+    <div align="center">
+        <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div align="center">
+                            <h1>账号说明</h1>
+                        </div>
+                    </div>
+                        <div class="panel-body">
+                            <ul class="list-group">
+                                <li class="list-group-item">wuhuaqiang --> 客户</li>
+                                <li class="list-group-item">wuhuaqiang_ceo --> 总经理</li>
+                                <li class="list-group-item">wuhuaqiang_sa --> 销售员</li>
+                            </ul>
+                            <h3>
+                        </h3>
+                    </div>
+        </div>
+    </div>
+</div>
+{% elif user.username == 'admin' %}
+
+{% else %}
+<div class="container">
     <div align="center">
         欢迎使用，现在是<h1>{{ now_time }}</h1>
         <br>
     </div>
     </div>
+{% endif %}
 {% endblock main_body %}

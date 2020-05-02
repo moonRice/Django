@@ -39,6 +39,8 @@ urlpatterns = [
     path('yg/', include(('apps.cangku.ck_yuangong.urls', 'ck_yuangong'), namespace='ck_yuangong')),
     # 保险销售
     path('bx/', include(('apps.bx.bx_index.urls', 'baoxian'), namespace='baoxian')),
+
+    path('ceshi/', include(('mytst.urls', 'ceshi'), namespace='ceshi'))  # namespace是反向解析
 ]
 
 if settings.DEBUG:

@@ -48,3 +48,4 @@ class Address(BaseModel):
         db_table = 'ty_address'
         verbose_name = '地址'
         verbose_name_plural = verbose_name
+

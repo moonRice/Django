@@ -4,6 +4,11 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
+/*.goods_num .num_add .add,.goods_num .num_add .minus{width:25px;line-height:25px;text-align:center;border-left:1px solid #ddd;border-bottom:1px solid #ddd;color:#666;font-size:14px}*/
+/*.goods_num .num_add .minus{border-bottom:0px}*/
+/*.fr{float:right}*/
+/*.fl{float:left}*/
+
 html {
   font-family: sans-serif;
   -webkit-text-size-adjust: 100%;

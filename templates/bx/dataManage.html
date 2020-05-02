@@ -1,0 +1,17 @@
+{% extends 'base_model.html' %}
+
+{% block title %}
+数据管理
+{% endblock %}
+
+{% block main_body %}
+<div class="container">
+<div align="center">
+    <h1>数据管理</h1>
+    <h3>保险信息</h3>
+</div>
+    <iframe src="/admin/bx_index/baoxianinfo/" width="1200" height="400" frameborder="0"></iframe>
+    <h3>员工管理</h3>
+    <iframe src="/admin/bx_index/yuangong_bx/" width="1200" height="400" frameborder="0"></iframe>
+</div>
+{% endblock %}

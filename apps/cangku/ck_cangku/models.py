@@ -1,5 +1,5 @@
 from django.db import models
-
+from mdeditor.fields import MDTextField
 from apps.cangku.ck_yuangong.models import yuangong
 
 
@@ -52,8 +52,11 @@ class huojia(models.Model):
 
 class wupin(models.Model):
     name = models.CharField(max_length=255, verbose_name='物品信息')
+    price = models.IntegerField(verbose_name='物品价格')
     number = models.CharField(max_length=5, verbose_name='物品编号')
     shuliang = models.CharField(max_length=5, verbose_name='物品数量')
+    img = models.CharField(max_length=255, verbose_name='图片链接')
+    info = MDTextField(verbose_name='物品介绍')
 
     forWhichHuojia = models.ForeignKey(huojia, on_delete=models.DO_NOTHING, verbose_name='货架所属')
 

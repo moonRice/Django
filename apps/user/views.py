@@ -100,9 +100,9 @@ class LoginView(View):
                 # return redirect(reverse('mainLobby:index'))
             else:
                 # 用户未激活
-                return render(request, 'login.html', {'errmsg': '账号莫有激活！你就不能瞅瞅你那邮箱里的激活邮件~'})
+                return render(request, '404.html', {'errmsg': '账号莫有激活！你就不能瞅瞅你那邮箱里的激活邮件~'})
         else:
-            return render(request, 'login.html', {'errmsg': '用户名和密码皆错误！也不晓得你是咋填滴~'})
+            return render(request, '404.html', {'errmsg': '用户名和密码皆错误！也不晓得你是咋填滴~'})
 
 
 # /user/logout
@@ -155,7 +155,7 @@ class RegisterView(View):
         if not re.match('[a-z0-9][\w.\-]*@[a-z0-9\-]+(\.[a-z]{2,5}){1,2}$', email):
             return render(request, 'register.html', {
                 'email_errmsg': '邮箱格式不对',
-                'color_email': 'red'
+                'color_email': True
             })
         if allow != 'on':
             return render(request, 'register.html', {
@@ -165,12 +165,12 @@ class RegisterView(View):
         if len(username) > 21 or len(username) < 5:
             return render(request, 'register.html', {
                 'username_errmsg': '用户名长度必须在6~20个字符之间',
-                'color_username': 'red'
+                'color_username': True
             })
         if len(password) > 21 or len(password) < 5:
             return render(request, 'register.html', {
                 'password_errmsg': '密码长度必须在6~20个字符之间',
-                'color_password': 'red'
+                'color_password': True
             })
 
         try:
@@ -201,8 +201,11 @@ class RegisterView(View):
         #
         # send_mail(subject, message, from_email, receiver, html_message=html_message)  # html_message必须这样写，他不是第五个参数
         sendMail.delay(email, username, token)
+        context = {
+            'username': username
+        }
 
-        return redirect(reverse('user:login'))
+        return redirect(reverse('user:login'), context)
 
 
 class ActiveView(View):
@@ -325,7 +328,7 @@ class UserAddressView(loMxi, View):
         #     # 不存在收货地址
         #     address = None
         address = Address.objects.get_default_address(user)
-
+        # address.set_cookie('addr', address, max_age=7 * 24 * 3600)
         if address == None:
             return render(request, 'user_add.html', {
                 'addr': None,

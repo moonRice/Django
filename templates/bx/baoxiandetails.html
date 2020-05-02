@@ -1,0 +1,36 @@
+{% extends 'base_model.html' %}
+
+{% block title %}
+{{ bxInfo.name }}详情
+{% endblock %}
+
+{% block main_body %}
+<div class="container">
+<div class="row">
+    <div class="col-md-5">
+        <img src="{{ bxInfo.img }}" class="img-thumbnail" width="400"height="400">
+    </div>
+    <div class="col-md-7">
+        <div align="left">
+        <h1>{{ bxInfo.name }}</h1>
+        <small>保险负责人：{{ bxInfo.fzr }}</small>
+        <br>
+        <h4>分类信息：{% for a in bxTypes %}{{ a.name }}{% endfor %}</h4>
+            <h1>{{ bxPrice.price }}.00￥<small>/份</small></h1>
+
+            <br><br><br><br><br><br><br><br><br>
+        <div align="right">
+            <a href="{% url 'baoxian:bx_dingdan' bxInfo.id %}"><button class="btn btn-danger">购买商品</button></a>
+{#            <button class="btn btn-success" {% if wp.shuliang == '0' %}disabled="disabled" title="对不起，卖完啦~" {% else %}{% endif %}>添加购物车</button>#}
+        </div>
+        </div>
+    </div>
+</div>
+
+    <h3>商品简介</h3>
+    {{ bxInfo.context|safe }}
+</div>
+
+
+
+{% endblock %}
