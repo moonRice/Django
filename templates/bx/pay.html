@@ -1,0 +1,25 @@
+{% extends 'base_model.html' %}
+
+{% block title %}
+支付成功
+{% endblock %}
+
+{% block in_script %}
+<script language="javascript" type="text/javascript">
+    {% if user.username == 'wuhuaqiang' %}
+        setTimeout("javascript:location.href='{% url 'baoxian:dd_list' %}'", 2000);
+    {% elif user.username == 'wuhuaqiang_ceo' %}
+        setTimeout("javascript:location.href='{% url 'baoxian:dd_list' %}'", 2000);
+    {% endif %}
+</script>
+{% endblock %}
+
+{% block main_body %}
+<div class="container">
+    <div align="center">
+        <h1>你已成功支付{{ price }}元</h1>
+        正在跳转到全部订单，请稍后。。。
+    </div>
+</div>
+
+{% endblock %}

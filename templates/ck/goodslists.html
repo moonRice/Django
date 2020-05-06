@@ -23,7 +23,11 @@
                             <br>
                             <a href="{% url 'ck_cangku:good_detail' a.id %}" class="btn btn-primary" role="button" target="_blank">查看商品详情</a>
                             <br><br>
-                            <a href="#"><button class="btn {% if a.shuliang == '0' %}btn-danger{% else %}btn-success{% endif %}" {% if a.shuliang == '0' %}disabled="disabled" title="对不起，卖完啦~" {% else %}{% endif %}>{% if a.shuliang == '0' %}售罄{% else %}添加至购物车{% endif %}</button></a>
+                            {% if a.shuliang == '0' %}
+                            <a href="{% url 'ck_cangku:dingdan' a.id %}"><button class="btn btn-danger" disabled="disabled" title="对不起，卖完啦~">售罄</button></a>
+                            {% else %}
+                            <a href="{% url 'ck_cangku:dingdan' a.id %}"><button class="btn btn-success" title="欢迎购买，一次买一份～">购买</button></a>
+                            {% endif %}
                             </p>
                         </div>
                     </div>

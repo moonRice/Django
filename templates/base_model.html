@@ -188,13 +188,14 @@ body {
 
                 {% elif user.username == 'lizhixin' %}<!-- 采购员、客户 -->
 {#                    <li {% if page == 'io' %}class="active"{% endif %}><a href="{% url 'ck_cangku:ioe' %}">仓库总览</a></li>#}
-                    <li {% if page == 'cangku' %}class="active"{% endif %}><a href="{% url 'cangku:idx' %}">仓库总览</a></li>
+{#                    <li {% if page == 'cangku' %}class="active"{% endif %}><a href="{% url 'cangku:idx' %}">仓库总览</a></li>#}
                     <li {% if page == 'good_list' %}class="active"{% endif %}><a href="{% url 'ck_cangku:good_list' %}">采购平台</a></li>
-                    <li {% if page == 'cangku' %}class="active"{% endif %}><a href="{% url 'cangku:idx' %}">查看订单</a></li>
+                    <li {% if page == 'ck_dd_list' %}class="active"{% endif %}><a href="{% url 'ck_cangku:dd_list' %}">查看订单</a></li>
                 {% elif user.username == 'lizhixin_ceo' %}<!-- 老板 -->
                     <li {% if page == 'cangku' %}class="active"{% endif %}><a href="{% url 'cangku:idx' %}">仓库总览</a></li>
                     <li {% if page == 'ck_cangku' %}class="active"{% endif %}><a href="{% url 'ck_cangku:idx' %}">仓库管理</a></li>
                     <li {% if page == 'ck_yuangong' %}class="active"{% endif %}><a href="{% url 'ck_yuangong:idx' %}">员工管理</a></li>
+                    <li {% if page == 'ck_dd_list' %}class="active"{% endif %}><a href="{% url 'ck_cangku:dd_list' %}">查看订单</a></li>
                 {% elif user.username == 'lizhixin_sec' %}<!-- 安保 -->
                     <li {% if page == 'cangku' %}class="active"{% endif %}><a href="{% url 'cangku:idx' %}">仓库总览</a></li>
                     <li {% if page == 'cangku' %}class="active"{% endif %}><a href="{% url 'cangku:idx' %}">安保计划</a></li>
@@ -293,14 +294,14 @@ body {
         {% else %}
         <div class="btn-group">
             <button type="button" class="btn btn-default" data-toggle="modal" data-target="#login">
-            登陆
+            登录
             </button>
             <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <span class="caret"></span>
                 <span class="sr-only">Toggle Dropdown</span>
             </button>
             <ul class="dropdown-menu">
-            <li><a href="{% url 'user:login' %}">登陆</a></li>
+            <li><a href="{% url 'user:login' %}">登录</a></li>
             <li><a href="{% url 'user:register' %}">注册</a></li>
             </ul>
         </div>
@@ -312,7 +313,7 @@ body {
 {% if user.username == 'lizhixin' %}
     <form class="navbar-form navbar-right">
         <div class="form-group">
-            <input type="text" class="form-control" placeholder="请输入你要搜索的关键字" title="打字呗~">
+            <input type="text" class="form-control" placeholder="请输入搜索关键字" title="打字呗~">
         </div>
         <button type="submit" class="btn btn-default" title="暂未开发出来~">搜索</button>
     </form>

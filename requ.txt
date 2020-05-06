@@ -1,0 +1,16 @@
+amqp==2.5.2
+asgiref==3.2.7
+billiard==3.6.3.0
+celery==4.4.2
+Django==3.0.6
+django-redis==4.11.0
+django-simpleui==4.0
+fs-django-mdeditor==0.1.20
+itsdangerous==1.1.0
+kombu==4.6.8
+Markdown==3.2.1
+PyMySQL==0.9.3
+pytz==2020.1
+redis==3.5.0
+sqlparse==0.3.1
+vine==1.3.0

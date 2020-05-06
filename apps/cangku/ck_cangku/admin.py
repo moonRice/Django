@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import yuanqu, cangku, huojia, wupin
+from .models import yuanqu, cangku, huojia, wupin, dingdan
 
 
 @admin.register(yuanqu)
@@ -36,4 +36,14 @@ class wupinM(admin.ModelAdmin):
         'name',
         'number',
         'forWhichHuojia',
+    )
+
+
+@admin.register(dingdan)
+class dingdanM(admin.ModelAdmin):
+    list_display = (
+        'dingdanhao',
+        'user',
+        'price',
+        'is_paid',
     )

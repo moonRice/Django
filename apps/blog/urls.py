@@ -21,7 +21,7 @@ from . import views
 from django.contrib.auth.decorators import login_required
 
 urlpatterns = [
-    path('', blog_list.as_view(), name='show_blog_list'),
+    path('', login_required(blog_list.as_view()), name='show_blog_list'),
     path('<int:blog_id>', views.blog_details, name='blog_details'),
     # path('<int:blog_id>', login_required(views.blog_details), name='blog_details'),
 ]

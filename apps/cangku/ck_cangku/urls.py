@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path, include
-from .views import indexShow, goodslistsShow, goodsdetailsShow, inManage, outManage, ioEchartsView
+from .views import indexShow, goodslistsShow, inManage, outManage, ioEchartsView, dingdanLists
 from . import views
 
 urlpatterns = [
@@ -10,4 +10,9 @@ urlpatterns = [
     path('in', inManage.as_view(), name='in'),
     path('out', outManage.as_view(), name='out'),
     path('ioEcharts', ioEchartsView.as_view(), name='ioe'),
+
+    path('baoxian/dingdan/<int:sp_id>', views.dingdanManage, name='dingdan'),
+    path('dingdanLists', dingdanLists.as_view(), name='dd_list'),
+
+    path('pay/<int:get_id>', views.pay, name='pay'),
 ]

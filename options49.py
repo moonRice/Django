@@ -4,22 +4,22 @@ web_run_port = '8000'
 allow_all_user_to_use = True
 
 """Database Settings"""
-# database_host = '47.100.23.12'
-# database_port = '3306'
-# database_username = 'root'
-# database_password = 'ZDn5AxYcW5BDSa5f'
-# database_name = 'tongyong'
+database_host = '47.100.23.12'
+database_port = '3306'
+database_username = 'root'
+database_password = 'ZDn5AxYcW5BDSa5f'
+database_name = 'tongyong'
 
 
 # database_host = '192.168.0.8'
-database_host = '192.168.81.129'
-database_port = '3306'
-database_username = 'root'
-database_password = 'root'
+# database_host = '172.20.10.6'
+# database_port = '3306'
+# database_username = 'root'
+# database_password = 'root'
 #
 # # database_name = 'lsgd'
 #
-database_name = 'tongyong'
+# database_name = 'tongyong'
 
 """Redis Settings --> Celery"""
 redis_celery_server_host = '47.100.23.12'

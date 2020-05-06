@@ -11,4 +11,5 @@ urlpatterns = [
     path('dataManage', dataManage.as_view(), name='data_manage'),
     path('baoxianManage', baoxianManage.as_view(), name='baoxian_manage'),
     path('dingdanLists', dingdanLists.as_view(), name='dd_list'),
+    path('pay/<int:id>', views.pay, name='pay'),
 ]

@@ -67,3 +67,20 @@ class wupin(models.Model):
         db_table = 'ck_wupin'
         verbose_name = '物品信息'
         verbose_name_plural = verbose_name
+
+
+class dingdan(models.Model):
+    user = models.CharField(max_length=255, verbose_name='用户信息')
+    dingdanhao = models.CharField(max_length=255, verbose_name='订单号')
+
+    baoxian_id = models.IntegerField(verbose_name='订单内的商品id')
+    price = models.IntegerField(verbose_name='订单价格')
+    is_paid = models.CharField(max_length=255, verbose_name='是否已经支付')
+
+    def __str__(self):
+        return self.dingdanhao
+
+    class Meta:
+        db_table = 'ck_dingdan'
+        verbose_name = '订单'
+        verbose_name_plural = verbose_name

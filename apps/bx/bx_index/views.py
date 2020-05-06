@@ -50,10 +50,12 @@ def dingdanManage(request, bx_id):
         dingdanResult = dingdan.objects.create(user=str(user), dingdanhao=str(dingdanhao), baoxian_id=bx_id,
                                                price=int(baoxian_price.price))
         dingdanResult.save()
+        pay_id = dingdan.objects.get(dingdanhao=str(dingdanhao))
         context = {
             'ddh': dingdanhao,
             'price': baoxian_price,
             'bc_info': bc_info,
+            'pay_id': pay_id,
         }
         return render(request, 'bx/dingdan.html', context)
     dingdanhao = dingdan.objects.order_by('-dingdanhao')
@@ -65,11 +67,13 @@ def dingdanManage(request, bx_id):
                                            price=baoxian_price, is_paid='未支付')
     dingdanResult.save()
     is_paid = dingdan.objects.get(dingdanhao=Ndingdanhao).is_paid
+    pay_id = dingdan.objects.get(dingdanhao=str(Ndingdanhao))
     context = {
         'ddh': Ndingdanhao,
         'price': baoxian_price,
         'bc_info': bc_info,
         'is_paid': is_paid,
+        'pay_id': pay_id,
     }
     return render(request, 'bx/dingdan.html', context)
 
@@ -94,6 +98,8 @@ class dataManage(View):
 
     def post(self, request):
         pass
+
+
 class baoxianManage(View):
     def get(self, reqest):
         context = {
@@ -104,14 +110,46 @@ class baoxianManage(View):
     def post(self, request):
         pass
 
+
 class dingdanLists(View):
     def get(self, reqest):
-        a = dingdan.objects.all()
+        a = dingdan.objects.order_by('-dingdanhao')
+        b = []
+        for id in a:
+            c = baoxianInfo.objects.get(id=id.baoxian_id)
+            b.append(c)
+        wupin_id = baoxianInfo.objects.all()
+        count_yzf = dingdan.objects.filter(is_paid='已支付')
+        count_wzf = dingdan.objects.filter(is_paid='未支付')
         context = {
-            'page': 'bx_dd_list',
+            'page': 'ck_dd_list',
             'dd_list': a,
+            'count_yzf': count_yzf,
+            'count_wzf': count_wzf,
+            'sp': b,
+            'wupin_id': wupin_id,
         }
         return render(reqest, 'bx/dd_R.html', context)
 
     def post(self, request):
         pass
+
+
+class baoxianManage(View):
+    def get(self, reqest):
+        context = {
+            'page': 'bx_baoxian_manage',
+        }
+        return render(reqest, 'bx/baoxianManage.html', context)
+
+    def post(self, request):
+        pass
+
+
+def pay(reqest, id):
+    a = dingdan.objects.get(id=id)
+    a.is_paid = '已支付'
+    a.save()
+    return render(reqest, 'bx/pay.html', {
+        'price': a.price,
+    })

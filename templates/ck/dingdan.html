@@ -9,10 +9,10 @@
 <h1>请检查您的订单：</h1>
 订单号：{{ ddh }}<br>
 价格:{{ price }}<br>
-名称：{{ bc_info.name }}<br>
+名称：{{ sp_info.name }}<br>
 {#保险负责人：{{ bc_info.fzr }}<br>#}
 <h3>订单状态：{{ is_paid }}</h3>
-        <a href="{% url 'baoxian:pay' pay_id.id %}" class="btn btn-success">支付</a>
+        <a href="{% url 'ck_cangku:pay' pay_id.id %}" class="btn btn-success">支付</a>
 </div>
 
 
