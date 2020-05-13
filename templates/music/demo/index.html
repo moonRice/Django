@@ -62,24 +62,44 @@
 
 {# 主体部分块 #}
 {% block main_body %}
-<div align="center"><h1 class="form-signin-heading">歌手推荐</h1><a href="{% url 'singer:show_singer_list' %}">查看所有歌手</a><br><br></div>
-    <div class="xnt">
-        <div class="box">
-            <div class="img">
-                <a href="{% url 'singer:singer_details' tools_man_img.id %}">
-                    <img src="{{ tools_man_img.image_URL }}" class="img-circle" >
-                </a>
-            </div>
-            <p>
-            <h4 class="form-signin-heading">{{ tools_man_information.name }}</h4>
-            </p>
-        </div>
-    </div>
+
+<div align="center"><h1 class="form-signin-heading">歌手推荐</h1><a href="{% url 'singer:show_singer_list' %}">查看所有歌手</a><br><br>
+    类型点击数排序：{%   for a in tp_history %}
+    {{ a.type }}（{{ a.count }}次）
+    {% endfor %}
+<br>
+
+    <div class="container">
+    <div align="left">
+        {% for a in singer_li %}
+{% for b in a %}
+    <a href="{% url 'singer:singer_details' b.id %}"><img src="{{ b.image_URL }}" class="img-circle" width="100" height="100"></a>
+
+    {{ b.singer_name }}
+{% endfor %}
+            <br><br>
+        {% endfor %}
+    </div></div>
+
+</div>
+
+{#    <div class="xnt">#}
+{#        <div class="box">#}
+{#            <div class="img">#}
+{#                <a href="{% url 'singer:singer_details' tools_man_img.id %}">#}
+{#                    <img src="{{ tools_man_img.image_URL }}" class="img-circle" >#}
+{#                </a>#}
+{#            </div>#}
+{#            <p>#}
+{#            <h4 class="form-signin-heading">{{ tools_man_information.name }}</h4>#}
+{#            </p>#}
+{#        </div>#}
+{#    </div>#}
 
 
     <div class="container">
         <div align="center">
-            欢迎来到音乐推荐平台【体验版】，现在是<h1>{{ now_time }}</h1>
+{#            欢迎来到音乐推荐平台【体验版】，现在是<h1>{{ now_time }}</h1>#}
             <br>
 
             <div class="row">
@@ -115,18 +135,18 @@
 
 
 
-    <div class="container">
-        <div align="center">
-            <h1 class="form-signin-heading">歌曲信息输出实验</h1><br>
-            1、歌手遍历测试【测试内容：基本文字信息、头像】<br>
-            歌手：{{ tools_man_information.name }}<br>
-            性别：{{ tools_man_information.gender }}<br>
-            头像：<img src="{{ tools_man_img.image_URL }}" class="img-circle" width="100" height="100"><br>
-            <font color="red">出现的问题：<br>
-            1、objects.get()中，条件不能是ForeignKey()，因为他不在要遍历的表中，他只是一种关系的表达；<br>
-            2、跨表联查可以用id（系统自动生成的id）进行查询；</font><br>
-            2、专辑信息遍历实验<br>
-        </div>
-    </div>
+{#    <div class="container">#}
+{#        <div align="center">#}
+{#            <h1 class="form-signin-heading">歌曲信息输出实验</h1><br>#}
+{#            1、歌手遍历测试【测试内容：基本文字信息、头像】<br>#}
+{#            歌手：{{ tools_man_information.name }}<br>#}
+{#            性别：{{ tools_man_information.gender }}<br>#}
+{#            头像：<img src="{{ tools_man_img.image_URL }}" class="img-circle" width="100" height="100"><br>#}
+{#            <font color="red">出现的问题：<br>#}
+{#            1、objects.get()中，条件不能是ForeignKey()，因为他不在要遍历的表中，他只是一种关系的表达；<br>#}
+{#            2、跨表联查可以用id（系统自动生成的id）进行查询；</font><br>#}
+{#            2、专辑信息遍历实验<br>#}
+{#        </div>#}
+{#    </div>#}
 
 {% endblock %}

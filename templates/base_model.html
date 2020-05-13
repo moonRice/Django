@@ -140,6 +140,9 @@ body {
 </script>
 </head>
 <body>
+{% block myBody %}
+{% endblock %}
+
 {#navbar-inverse#}
     <nav class="navbar  {% if user.username == 'wuhuaqiang' %}navbar-inverse{% endif %} navbar-fixed-top navbar-default" role="navigation">
         <div class="container-fluid">
@@ -152,11 +155,13 @@ body {
                 </button>
                 <a href="#" class="navbar-brand">
                     {% if user.username == 'lizhixin' %}
-                        在线仓库管理平台
+                        在线库房管理平台
+                    {% elif user.username == 'lizhixin_ceo' %}
+                        在线库房管理平台
+                    {% elif user.username == 'lizhixin_io' %}
+                        在线库房管理平台
                     {% elif user.username == 'zhengyang' %}
                         在线音乐
-                    {% elif user.username == 'wuhuaqiang' %}
-                        保险在线销售
                     {% elif user.username == 'admin' %}
                         超级管理员
                     {% else %}
@@ -272,20 +277,26 @@ body {
     <!-- Split button -->
     <div class="btn-group">
         <button type="button" class="btn btn-success" data-toggle="modal" data-target="#userInfo">
-            {{ user.username }} <span class="badge">6</span>
+            {{ user.username }}
+{#            <span class="badge">6</span>#}
         </button>
         <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <span class="caret"></span>
             <span class="sr-only">Toggle Dropdown</span>
         </button>
         <ul class="dropdown-menu">
+            <li class="dropdown-header">账号信息</li>{% if user.username == 'wuhuaqiang' %}
         <li class="dropdown-header">个人消息</li>
         <li><a href="{% url 'cangku:msg_show' %}">你有6条未读消息</a></li>
         <li role="separator" class="divider"></li>
         <li class="dropdown-header">账号信息</li>
         <li><a href="{% url 'user:user_center' %}">账号信息</a></li>
+
         <li><a href="{% url 'user:user_addr' %}">地址管理</a></li>
+            {% endif %}
+            {% if user.username == 'zhengyang' %}
         <li><a href="{% url 'user:user_ord' %}">查看历史记录</a></li>
+                {% endif %}
         <li role="separator" class="divider"></li>
         <li class="dropdown-header">系统管理</li>
         <li><a href="/admin" target="_blank">进入后台</a></li>

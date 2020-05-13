@@ -37,7 +37,7 @@
                         {
                             source:
                             [
-                                ['用户', {% for a in allUser %}'{{ a.username }}',{% endfor %}],
+                                ['用户', {% for a in allUser %}'{% if a.username == 'zhengyang' %}{{ a.username }}{% endif %}',{% endfor %}],
 
 
 

@@ -3,7 +3,8 @@ from django.views.generic import View
 
 import datetime
 
-from apps.music_apps.sing.models import SingInfo, SingerName
+from apps.music_apps.sing.models import SingInfo, SingerName, Flag
+from apps.music_apps.user_history.models import UserTypeHistory
 
 
 # Create your views here.
@@ -12,10 +13,12 @@ from apps.music_apps.sing.models import SingInfo, SingerName
 class IndexView(View):
     """音乐推荐"""
     def get(self, request):
+        tp_history = UserTypeHistory.objects.order_by('count')
         now_time = datetime.datetime.now()
         return render(request, 'music/index.html', {
             'now_time': now_time,
             'page': 'music',
+            'tp_history': tp_history,
         })
 
     def post(self, request):
@@ -27,7 +30,15 @@ class IndexView(View):
 class IndexViewDemo(View):
     """音乐推荐【体验版】"""
     def get(self, request):
+        tp_history = UserTypeHistory.objects.order_by('-count')
         now_time = datetime.datetime.now()
+
+
+        singer_li = []
+        for singertype in tp_history:
+            type = Flag.objects.get(name=singertype.type)
+            singer = SingInfo.objects.filter(singer_type=type)
+            singer_li.append(singer)
 
         tools_man = '林俊杰'
 
@@ -40,6 +51,8 @@ class IndexViewDemo(View):
             'page': 'music_demo',
             'tools_man_information': tools_man_information,
             'tools_man_img': tools_man_img,
+            'tp_history': tp_history,
+            'singer_li': singer_li,
         }
         return render(request, 'music/demo/index.html', context)
 
