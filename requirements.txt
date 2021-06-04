@@ -3,7 +3,7 @@ amqp==2.5.2
 asgiref==3.2.5
 billiard==3.6.3.0
 celery==4.4.2
-Django==3.0.4
+Django==3.1.9
 django-redis==4.11.0
 django-simpleui==3.9.1
 fs-django-mdeditor==0.1.20
